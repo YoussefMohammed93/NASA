@@ -92,7 +92,7 @@ const Hero = () => {
           </motion.div>
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto pb-14"
           >
             {[
               { number: "50K+", label: "Space Images", icon: Camera },

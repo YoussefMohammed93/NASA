@@ -123,7 +123,7 @@ const Header = () => {
           </div>
         </Link>
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-3">
           <nav className="flex items-center space-x-1">
             {navigationItems.map((item) => (
               <HoverCard
@@ -135,7 +135,7 @@ const Header = () => {
                 <HoverCardTrigger asChild>
                   <Button
                     variant="ghost"
-                    className="text-sm font-medium font-heading hover:text-primary transition-colors px-4 py-2 flex items-center gap-1"
+                    className="text-sm rounded-lg font-medium font-heading hover:text-primary transition-colors px-4 py-2 flex items-center gap-1"
                   >
                     {item.title}
                     {openHoverCard === item.title ? (
@@ -155,10 +155,10 @@ const Header = () => {
                         <a
                           key={subItem.title}
                           href={subItem.href}
-                          className="block select-none space-y-2 rounded-lg p-3 leading-none no-underline outline-none transition-all hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group border border-transparent hover:border-border"
+                          className="block select-none space-y-2 rounded-3xl p-3 leading-none no-underline outline-none transition-all hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group border border-transparent hover:border-border"
                         >
                           <div className="flex items-center space-x-3">
-                            <div className="p-2 rounded-md bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                            <div className="p-2 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
                               <subItem.icon className="w-5 h-5 text-primary" />
                             </div>
                             <div className="flex-1">
@@ -178,7 +178,21 @@ const Header = () => {
               </HoverCard>
             ))}
           </nav>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-200 font-heading">
+          <div className="flex items-center space-x-2">
+            <Link
+              href="/about"
+              className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
+            >
+              Contact
+            </Link>
+          </div>
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading">
             Start Exploring
           </Button>
         </div>
@@ -186,7 +200,11 @@ const Header = () => {
         <div className="md:hidden">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="hover:bg-accent">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-accent rounded-lg"
+              >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -217,10 +235,10 @@ const Header = () => {
                         <a
                           key={subItem.title}
                           href={subItem.href}
-                          className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent transition-colors group"
+                          className="flex items-start space-x-3 p-3 rounded-3xl hover:bg-accent transition-colors group"
                           onClick={() => setIsOpen(false)}
                         >
-                          <div className="p-2 rounded-md bg-primary/10 group-hover:bg-primary/20 transition-colors mt-0.5">
+                          <div className="p-2 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors mt-0.5">
                             <subItem.icon className="w-5 h-5 text-primary" />
                           </div>
                           <div className="flex-1">
@@ -236,8 +254,27 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
+
+                {/* Additional Mobile Links */}
+                <div className="space-y-2 px-2 border-t pt-4">
+                  <Link
+                    href="/about"
+                    className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    About NASA Explorer
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Contact & Support
+                  </Link>
+                </div>
+
                 <div className="p-3">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg font-heading">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-lg font-heading">
                     Start Exploring
                   </Button>
                 </div>

@@ -53,7 +53,7 @@ const Header = () => {
         },
         {
           title: "Near Earth Objects",
-          href: "/asteroids",
+          href: "/neo",
           icon: Satellite,
           description: "Track asteroids and comets",
         },

@@ -80,7 +80,10 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
-            <Button size="lg" className="w-full sm:w-[200px]">
+            <Button
+              size="lg"
+              className="w-full sm:w-[200px] text-primary-foreground dark:text-foreground"
+            >
               Start Exploring
               <ArrowRight className="h-5 w-5" />
             </Button>

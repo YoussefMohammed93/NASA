@@ -29,6 +29,7 @@ import {
 } from "@/components/ui/hover-card";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,7 +111,7 @@ const Header = () => {
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shadow-lg"
             >
-              <Rocket className="w-5 h-5 text-primary-foreground" />
+              <Rocket className="w-5 h-5 text-primary-foreground dark:text-foreground" />
             </motion.div>
           </div>
           <div className="flex flex-col">
@@ -186,12 +187,14 @@ const Header = () => {
               About
             </Link>
           </div>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading">
+          <ThemeToggle />
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground font-heading">
             Start Exploring
           </Button>
         </div>
-        {/* Mobile Menu */}
-        <div className="md:hidden">
+        {/* Mobile Menu + Theme Toggle */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button

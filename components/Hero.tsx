@@ -56,7 +56,7 @@ const Hero = () => {
         >
           <motion.div variants={itemVariants} className="my-8">
             <div className="inline-flex items-center bg-secondary text-secondary-foreground border border-border hover:bg-secondary/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold transition-colors font-body">
-              <Star className="w-4 h-4 text-primary mr-2" />
+              <Star className="w-4 h-4 text-yellow-500 fill-current mr-2" />
               Powered by Official NASA Data
             </div>
           </motion.div>

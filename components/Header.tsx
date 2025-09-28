@@ -178,18 +178,12 @@ const Header = () => {
               </HoverCard>
             ))}
           </nav>
-          <div className="flex items-center space-x-2">
+          <div>
             <Link
               href="/about"
               className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
             >
               About
-            </Link>
-            <Link
-              href="/contact"
-              className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
-            >
-              Contact
             </Link>
           </div>
           <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-heading">
@@ -221,7 +215,7 @@ const Header = () => {
                   <span>NASA Explorer</span>
                 </SheetTitle>
                 <SheetDescription className="font-body">
-                  Explore the universe with NASA's data
+                  Explore the universe with NASA&apos;s data
                 </SheetDescription>
               </SheetHeader>
               <div className="space-y-6">
@@ -254,9 +248,7 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
-
-                {/* Additional Mobile Links */}
-                <div className="space-y-2 px-2 border-t pt-4">
+                <div className="px-2 border-t pt-4">
                   <Link
                     href="/about"
                     className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
@@ -264,15 +256,7 @@ const Header = () => {
                   >
                     About NASA Explorer
                   </Link>
-                  <Link
-                    href="/contact"
-                    className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Contact & Support
-                  </Link>
                 </div>
-
                 <div className="p-3">
                   <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-lg font-heading">
                     Start Exploring

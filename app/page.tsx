@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import FeaturesGrid from "@/components/FeaturesGrid";
+import LiveHighlights from "@/components/LiveHighlights";
 
 export default function MainPage() {
   return (
@@ -8,6 +9,7 @@ export default function MainPage() {
       <Header />
       <Hero />
       <FeaturesGrid />
+      <LiveHighlights />
     </div>
   );
 }

@@ -1,13 +1,13 @@
 "use client";
 
 import {
+  Zap,
+  Globe,
   Camera,
   Rocket,
   Satellite,
-  Globe,
-  Zap,
-  Image as ImageIcon,
   ArrowRight,
+  Image as ImageIcon,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -52,7 +52,7 @@ const features = [
 
 export default function FeaturesGrid() {
   return (
-    <section className="w-full border-t bg-background">
+    <section className="w-full bg-muted/35">
       <div className="max-w-7xl mx-auto px-5 py-14">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">

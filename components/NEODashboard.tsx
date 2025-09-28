@@ -315,7 +315,7 @@ export default function NEODashboard() {
   const totalCount = getAllNEOs().length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-blue-50/30 to-blue-100/20 dark:from-background dark:via-blue-950/20 dark:to-blue-900/10">
+    <div className="min-h-screen">
       <Header />
       <div className="bg-gradient-to-br from-blue-700 via-blue-500 to-blue-700 dark:from-blue-500/25 dark:via-blue-600/20 dark:to-blue-700/15 border-b">
         <div className="max-w-7xl mx-auto px-5 py-8">

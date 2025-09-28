@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { motion, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const steps = [
   {
@@ -57,11 +59,71 @@ const steps = [
   },
 ] as const;
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const ctaVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      delay: 1.2,
+    },
+  },
+};
+
 export default function GettingStarted() {
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
   return (
-    <section className="w-full">
+    <motion.section
+      ref={ref}
+      className="w-full"
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div className="max-w-7xl mx-auto px-5 py-16">
-        <div className="text-center mb-12">
+        <motion.div variants={itemVariants} className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
             Getting Started
           </h2>
@@ -69,22 +131,37 @@ export default function GettingStarted() {
             Start your space exploration journey in three simple steps. From
             discovery to sharing, we&apos;ve made it effortless.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </motion.div>
+        <motion.div
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {steps.map((step, index) => (
-            <div
+            <motion.div
               key={step.number}
+              variants={cardVariants}
               className="group relative bg-card text-card-foreground border rounded-4xl p-6 hover:bg-accent hover:text-accent-foreground transition-all duration-300"
+              whileHover={{ y: -10, scale: 1.03 }}
+              transition={{ duration: 0.2 }}
             >
-              <div className="absolute -top-3 -left-3 z-10">
+              <motion.div
+                className="absolute -top-3 -left-3 z-10"
+                initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ delay: 0.5 + index * 0.2, duration: 0.4 }}
+              >
                 <div className="bg-primary text-primary-foreground dark:text-foreground rounded-2xl px-3 py-1.5 text-sm font-bold font-heading border-2 border-background">
                   {step.number}
                 </div>
-              </div>
+              </motion.div>
               <div className="mb-6 mt-4">
-                <div className="rounded-2xl bg-primary/10 text-primary p-4 w-fit group-hover:bg-primary/20 transition-colors">
+                <motion.div
+                  className="rounded-2xl bg-primary/10 text-primary p-4 w-fit group-hover:bg-primary/20 transition-colors"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <step.icon className="h-8 w-8" />
-                </div>
+                </motion.div>
               </div>
               <div className="space-y-4">
                 <div>
@@ -97,49 +174,87 @@ export default function GettingStarted() {
                 </div>
                 <div className="space-y-2">
                   {step.features.map((feature, featureIndex) => (
-                    <div
+                    <motion.div
                       key={featureIndex}
                       className="flex items-center gap-3 text-xs sm:text-sm text-muted-foreground"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.7 + index * 0.2 + featureIndex * 0.1,
+                        duration: 0.3,
+                      }}
                     >
                       <feature.icon className="h-4 w-4 sm:h-5 sm:w-5" />
                       <span className="font-body">{feature.label}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
                 <div className="pt-2">
                   <Link href={step.href}>
-                    <Button className="w-full rounded-2xl font-heading dark:text-foreground">
-                      {step.cta}
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ duration: 0.1 }}
+                    >
+                      <Button className="w-full rounded-2xl font-heading dark:text-foreground">
+                        {step.cta}
+                        <motion.div
+                          whileHover={{ x: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.div>
+                      </Button>
+                    </motion.div>
                   </Link>
                 </div>
               </div>
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-border">
-                  <div className="absolute -right-1 -top-1 w-2 h-2 bg-primary rounded-full"></div>
-                </div>
+                <motion.div
+                  className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-border"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1 + index * 0.2, duration: 0.5 }}
+                >
+                  <motion.div
+                    className="absolute -right-1 -top-1 w-2 h-2 bg-primary rounded-full"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 1.3 + index * 0.2, duration: 0.3 }}
+                  />
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="text-center mt-12">
+        </motion.div>
+        <motion.div variants={ctaVariants} className="text-center mt-12">
           <div className="space-y-4">
             <p className="text-sm text-muted-foreground font-body">
               Ready to start your space exploration journey?
             </p>
             <Link href="/apod">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground font-heading rounded-2xl"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
-                Begin Exploring
-                <ArrowRight className="h-5 w-5" />
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground font-heading rounded-2xl"
+                >
+                  Begin Exploring
+                  <motion.div
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ArrowRight className="h-5 w-5" />
+                  </motion.div>
+                </Button>
+              </motion.div>
             </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

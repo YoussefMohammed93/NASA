@@ -19,6 +19,44 @@ import {
 } from "@/lib/nasa-api-service";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { motion, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function LiveHighlights() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +64,11 @@ export default function LiveHighlights() {
   const [marsData, setMarsData] = useState<ProcessedMarsPhoto | null>(null);
   const [neoData, setNeoData] = useState<ProcessedNEOData | null>(null);
   const [errors, setErrors] = useState<string[]>([]);
+
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     const loadData = async () => {
@@ -51,19 +94,33 @@ export default function LiveHighlights() {
   }, []);
 
   return (
-    <section className="w-full bg-background">
+    <motion.section 
+      ref={ref}
+      className="w-full bg-background"
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div className="max-w-7xl mx-auto px-5 py-16">
-        <div className="text-center mb-12">
+        <motion.div variants={itemVariants} className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
             Live from NASA
           </h2>
           <p className="text-sm md:text-base text-muted-foreground mt-2 font-body">
             Fresh data and discoveries updated daily from space missions.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
+        </motion.div>
+        <motion.div 
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
+        >
           {/* APOD Card */}
-          <div className="bg-card text-card-foreground border rounded-4xl hover:bg-accent hover:text-accent-foreground transition-colors">
+          <motion.div 
+            variants={cardVariants}
+            className="bg-card text-card-foreground border rounded-4xl hover:bg-accent hover:text-accent-foreground transition-colors"
+            whileHover={{ y: -5, scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="rounded-2xl bg-primary/10 text-primary p-2.5">
@@ -120,9 +177,14 @@ export default function LiveHighlights() {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
           {/* Mars Latest Card */}
-          <div className="bg-card text-card-foreground border rounded-4xl hover:bg-accent hover:text-accent-foreground transition-colors">
+          <motion.div 
+            variants={cardVariants}
+            className="bg-card text-card-foreground border rounded-4xl hover:bg-accent hover:text-accent-foreground transition-colors"
+            whileHover={{ y: -5, scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="rounded-2xl bg-primary/10 text-primary p-2.5">
@@ -189,9 +251,14 @@ export default function LiveHighlights() {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
           {/* NEO Today Card */}
-          <div className="bg-card text-card-foreground border rounded-4xl hover:bg-accent hover:text-accent-foreground transition-colors">
+          <motion.div 
+            variants={cardVariants}
+            className="bg-card text-card-foreground border rounded-4xl hover:bg-accent hover:text-accent-foreground transition-colors"
+            whileHover={{ y: -5, scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="rounded-2xl bg-primary/10 text-primary p-2.5">
@@ -259,9 +326,9 @@ export default function LiveHighlights() {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

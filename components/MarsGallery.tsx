@@ -202,7 +202,7 @@ const MarsGallery = () => {
         setLoading(false);
       }
     },
-    [selectedRover, selectedCamera, selectedDate, selectedSol, dateType]
+    [selectedRover, selectedCamera, selectedDate, selectedSol, dateType, page]
   );
 
   useEffect(() => {

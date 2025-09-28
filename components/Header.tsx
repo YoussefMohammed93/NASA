@@ -188,7 +188,7 @@ const Header = () => {
             </Link>
           </div>
           <ThemeToggle />
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground font-heading">
+          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground font-heading rounded-2xl">
             Start Exploring
           </Button>
         </div>
@@ -213,7 +213,7 @@ const Header = () => {
               <SheetHeader className="text-left">
                 <SheetTitle className="flex items-center space-x-3 font-heading">
                   <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                    <Rocket className="w-5 h-5 text-primary-foreground" />
+                    <Rocket className="w-5 h-5 text-primary-foreground dark:text-foreground" />
                   </div>
                   <span>NASA Explorer</span>
                 </SheetTitle>
@@ -261,7 +261,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="p-3">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl shadow-lg font-heading">
+                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground rounded-xl shadow-lg font-heading">
                     Start Exploring
                   </Button>
                 </div>

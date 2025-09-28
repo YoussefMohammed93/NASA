@@ -82,13 +82,17 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="w-full sm:w-[200px] text-primary-foreground dark:text-foreground"
+              className="w-full sm:w-[200px] text-primary-foreground dark:text-foreground rounded-2xl"
             >
               Start Exploring
               <ArrowRight className="h-5 w-5" />
             </Button>
 
-            <Button variant="outline" size="lg" className="w-full sm:w-[200px]">
+            <Button
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-[200px] rounded-2xl"
+            >
               Watch Demo
               <Play className="h-5 w-5" />
             </Button>

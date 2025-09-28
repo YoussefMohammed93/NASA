@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { Toaster } from "sonner";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -39,6 +40,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster
+            position="bottom-right"
+            richColors
+            closeButton
+            theme="system"
+          />
         </ThemeProvider>
       </body>
     </html>

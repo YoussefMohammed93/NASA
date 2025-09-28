@@ -4,6 +4,7 @@ import ValueProps from "@/components/ValueProps";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import LiveHighlights from "@/components/LiveHighlights";
 import GettingStarted from "@/components/GettingStarted";
+import Footer from "@/components/Footer";
 
 export default function MainPage() {
   return (
@@ -14,6 +15,7 @@ export default function MainPage() {
       <LiveHighlights />
       <ValueProps />
       <GettingStarted />
+      <Footer />
     </div>
   );
 }

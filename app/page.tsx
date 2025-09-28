@@ -1,3 +1,11 @@
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+
 export default function MainPage() {
-  return <div>Main Page</div>;
+  return (
+    <div>
+      <Header />
+      <Hero />
+    </div>
+  );
 }

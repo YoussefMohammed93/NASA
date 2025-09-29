@@ -172,7 +172,19 @@ const Header = () => {
               </HoverCard>
             ))}
           </nav>
-          <div>
+          <div className="flex items-center gap-1">
+            <Link
+              href="/docs"
+              className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
+            >
+              Docs
+            </Link>
+            <Link
+              href="/faq"
+              className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
+            >
+              FAQ
+            </Link>
             <Link
               href="/about"
               className="text-sm font-medium font-heading hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-accent"
@@ -241,7 +253,21 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
-                <div className="px-2 border-t py-4">
+                <div className="px-2 border-t py-4 space-y-2">
+                  <Link
+                    href="/docs"
+                    className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Documentation
+                  </Link>
+                  <Link
+                    href="/faq"
+                    className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    FAQ
+                  </Link>
                   <Link
                     href="/about"
                     className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"

@@ -68,7 +68,7 @@ interface GalleryResponse {
 }
 
 const Gallery = () => {
-  const [allImages, setAllImages] = useState<GalleryImage[]>([]);
+  const [, setAllImages] = useState<GalleryImage[]>([]);
   const [displayedImages, setDisplayedImages] = useState<GalleryImage[]>([]);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [loading, setLoading] = useState(false);

@@ -29,7 +29,7 @@ const features = [
   {
     title: "Near‑Earth Objects",
     description: "Track asteroids and comets approaching Earth.",
-    href: "/asteroids",
+    href: "/neo",
     icon: Satellite,
   },
   {
@@ -46,7 +46,7 @@ const features = [
   },
   {
     title: "Media Gallery",
-    description: "Browse NASA’s images, videos, and audio.",
+    description: "Browse NASA’s images, videos, and audio files.",
     href: "/gallery",
     icon: ImageIcon,
   },

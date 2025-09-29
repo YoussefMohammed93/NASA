@@ -11,7 +11,7 @@ const footerSections = [
     links: [
       { name: "Astronomy Picture of the Day", href: "/apod" },
       { name: "Mars Rover Photos", href: "/mars" },
-      { name: "Near Earth Objects", href: "/asteroids" },
+      { name: "Near Earth Objects", href: "/neo" },
       { name: "Earth Imagery", href: "/earth" },
     ],
   },
@@ -19,18 +19,16 @@ const footerSections = [
     title: "Data & Tools",
     links: [
       { name: "Space Weather", href: "/space-weather" },
+      { name: "Natural Events", href: "/natural-events" },
       { name: "Image Gallery", href: "/gallery" },
-      { name: "Exoplanets", href: "/exoplanets" },
-      { name: "API Documentation", href: "/docs" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { name: "About NASA Explorer", href: "/about" },
-      { name: "Getting Started Guide", href: "/guide" },
+      { name: "Documentation", href: "/docs" },
       { name: "FAQ", href: "/faq" },
-      { name: "Contact Support", href: "/support" },
+      { name: "About NASA Explorer", href: "/about" },
     ],
   },
 ] as const;

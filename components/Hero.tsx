@@ -47,6 +47,7 @@ const Hero = () => {
       ref={ref}
       className="relative flex items-center justify-center overflow-hidden bg-background"
     >
+      <div className="absolute inset-0 bg-grid-pattern opacity-20 dark:opacity-100"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-5 text-center">
         <motion.div
           variants={containerVariants}

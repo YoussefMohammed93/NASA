@@ -198,3 +198,9 @@
     }
   }
 }
+
+.bg-grid-pattern {
+  background-image: linear-gradient(rgba(10, 10, 10, 0.1) 1px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 2px);
+  background-size: 20px 20px;
+}

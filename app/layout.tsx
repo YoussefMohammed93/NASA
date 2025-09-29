@@ -18,9 +18,43 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "NASA Explorer - Space Data Portal",
+  title: {
+    default: "NASA Explorer - Space Data Portal",
+    template: "%s | NASA Explorer",
+  },
   description:
     "Explore the universe with NASA's official data - Mars rover photos, astronomy pictures, space weather, and more.",
+  keywords: [
+    "NASA",
+    "space",
+    "astronomy",
+    "Mars rover",
+    "APOD",
+    "space weather",
+    "asteroids",
+    "space exploration",
+  ],
+  authors: [{ name: "NASA Explorer" }],
+  creator: "NASA Explorer",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://nasa-explorer.com",
+    title: "NASA Explorer - Space Data Portal",
+    description:
+      "Explore the universe with NASA's official data - Mars rover photos, astronomy pictures, space weather, and more.",
+    siteName: "NASA Explorer",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NASA Explorer - Space Data Portal",
+    description:
+      "Explore the universe with NASA's official data - Mars rover photos, astronomy pictures, space weather, and more.",
+  },
+  icons: {
+    icon: "/icon",
+    apple: "/apple-icon",
+  },
 };
 
 export default function RootLayout({

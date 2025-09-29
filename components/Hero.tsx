@@ -19,6 +19,16 @@ const Hero = () => {
     triggerOnce: true,
   });
 
+  const scrollToFeatures = () => {
+    const featuresSection = document.getElementById("explore-section");
+    if (featuresSection) {
+      featuresSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,7 +55,7 @@ const Hero = () => {
   return (
     <section
       ref={ref}
-      className="relative flex items-center justify-center overflow-hidden bg-background"
+      className="min-h-screen relative flex items-center justify-center overflow-hidden bg-background"
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-20 dark:opacity-100"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-5 text-center">
@@ -55,7 +65,7 @@ const Hero = () => {
           animate={inView ? "visible" : "hidden"}
           className="max-w-4xl mx-auto"
         >
-          <motion.div variants={itemVariants} className="my-8">
+          <motion.div variants={itemVariants} className="mb-8 mt-8 md:mt-0">
             <div className="inline-flex items-center bg-secondary text-secondary-foreground border border-border hover:bg-secondary/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold transition-colors font-body">
               <Star className="w-4 h-4 text-yellow-500 fill-current mr-2" />
               Powered by Official NASA Data
@@ -84,6 +94,7 @@ const Hero = () => {
             <Button
               size="lg"
               className="w-full sm:w-[200px] text-primary-foreground dark:text-foreground rounded-2xl"
+              onClick={scrollToFeatures}
             >
               Start Exploring
               <ArrowRight className="h-5 w-5" />
@@ -93,9 +104,16 @@ const Hero = () => {
               variant="outline"
               size="lg"
               className="w-full sm:w-[200px] rounded-2xl"
+              asChild
             >
-              Watch Demo
-              <Play className="h-5 w-5" />
+              <a
+                href="https://images.nasa.gov/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Watch Demo
+                <Play className="h-5 w-5" />
+              </a>
             </Button>
           </motion.div>
           <motion.div

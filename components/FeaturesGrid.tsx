@@ -96,6 +96,7 @@ export default function FeaturesGrid() {
 
   return (
     <motion.section
+      id="explore-section"
       ref={ref}
       className="w-full bg-muted/35"
       initial="hidden"

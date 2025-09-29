@@ -217,8 +217,23 @@ export default function Footer() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-400 dark:text-gray-600 font-body">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center flex-wrap justify-center gap-4">
                 <span>© {new Date().getFullYear()} NASA Explorer.</span>
+                <div className="flex items-center gap-3">
+                  <Link
+                    href="/privacy"
+                    className="hover:text-white dark:hover:text-gray-900 transition-colors"
+                  >
+                    Privacy
+                  </Link>
+                  <span>•</span>
+                  <Link
+                    href="/terms"
+                    className="hover:text-white dark:hover:text-gray-900 transition-colors"
+                  >
+                    Terms
+                  </Link>
+                </div>
               </div>
               <div className="flex items-center gap-4">
                 <Link

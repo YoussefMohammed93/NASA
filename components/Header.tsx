@@ -6,7 +6,6 @@ import {
   Satellite,
   Globe,
   Camera,
-  Telescope,
   Zap,
   Image,
   ChevronDown,
@@ -85,12 +84,6 @@ const Header = () => {
           href: "/gallery",
           icon: Image,
           description: "NASA's media collection",
-        },
-        {
-          title: "Exoplanets",
-          href: "/exoplanets",
-          icon: Telescope,
-          description: "Discover distant worlds",
         },
       ],
     },
@@ -188,9 +181,6 @@ const Header = () => {
             </Link>
           </div>
           <ThemeToggle />
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground font-heading rounded-2xl">
-            Start Exploring
-          </Button>
         </div>
         {/* Mobile Menu + Theme Toggle */}
         <div className="md:hidden flex items-center gap-2">
@@ -251,7 +241,7 @@ const Header = () => {
                     </div>
                   </div>
                 ))}
-                <div className="px-2 border-t pt-4">
+                <div className="px-2 border-t py-4">
                   <Link
                     href="/about"
                     className="flex items-center p-3 rounded-2xl hover:bg-accent transition-colors font-heading text-sm font-medium"
@@ -259,11 +249,6 @@ const Header = () => {
                   >
                     About NASA Explorer
                   </Link>
-                </div>
-                <div className="p-3">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground dark:text-foreground rounded-xl shadow-lg font-heading">
-                    Start Exploring
-                  </Button>
                 </div>
               </div>
             </SheetContent>
